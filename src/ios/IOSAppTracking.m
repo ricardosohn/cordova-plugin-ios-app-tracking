@@ -6,7 +6,7 @@
 
 - (NSString*)requestPermission:(CDVInvokedUrlCommand*)command
 {
-    __block NSString* res = [[NSMutableString alloc] initWithString:@"none"];
+    __block NSMutableString* res = [[NSMutableString alloc] initWithString:@"none"];
     NSLog(@"[IOSAppTracking] Request Permission called!");
 
     if (@available(iOS 14, *)) {
