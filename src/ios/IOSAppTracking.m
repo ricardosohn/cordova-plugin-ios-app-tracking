@@ -13,6 +13,7 @@
         NSLog(@"[IOSAppTracking] iOS 14 detected!");
 
         if ([ATTrackingManager trackingAuthorizationStatus] == ATTrackingManagerAuthorizationStatusNotDetermined) {
+            NSLog(@"[IOSAppTracking] Asking permission...");
             [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
                 NSLog(@"[IOSAppTracking] permission status: %lu", status);
 
@@ -36,6 +37,9 @@
                     default:
                         [res setString:@"unknown"];
                         break;
+
+                    CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:res];
+                    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
                 }
                 NSLog(@"[IOSAppTracking] permission status result: %s", res);
             }];
@@ -46,8 +50,6 @@
         NSLog(@"[IOSAppTracking] iOS 14 not detected!");
     }
 
-    CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:res];
-    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }
 
 @end
