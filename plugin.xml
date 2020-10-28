@@ -41,7 +41,6 @@
     <source-file src="src/ios/IOSAppTracking.m" target-dir="IOSAppTracking"/>
 
     <framework src="AppTrackingTransparency.framework" />
-    <framework src="AdSupport.framework" />
   </platform>
 
 </plugin>

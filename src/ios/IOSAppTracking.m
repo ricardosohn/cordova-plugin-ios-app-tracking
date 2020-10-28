@@ -1,5 +1,4 @@
 #import <AppTrackingTransparency/AppTrackingTransparency.h>
-#import <AdSupport/AdSupport.h>
 #import <Cordova/CDVPluginResult.h>
 #import "IOSAppTracking.h"
 
