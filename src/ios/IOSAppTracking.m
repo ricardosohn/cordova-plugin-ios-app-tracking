@@ -13,35 +13,35 @@
         NSLog(@"[IOSAppTracking] iOS 14 detected!");
         [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
             NSLog(@"[IOSAppTracking] depois do request");
-//
-//             switch (status) {
-//                 case ATTrackingManagerAuthorizationStatusAuthorized:
-//                     NSLog(@"Authorized");
-//                     resultString = @"authorized";
-//                     break;
-//
-//                 case ATTrackingManagerAuthorizationStatusNotDetermined:
-//                     NSLog(@"not-determined");
-//                     resultString = @"not-determined";
-//                     break;
-//
-//                 case ATTrackingManagerAuthorizationStatusRestricted:
-//                     NSLog(@"restricted");
-//                     resultString = @"restricted";
-//                     break;
-//
-//                 case ATTrackingManagerAuthorizationStatusDenied:
-//                     NSLog(@"denied");
-//                     resultString = @"denied";
-//                     break;
-//
-//                 default:
-//                     NSLog(@"unknown");
-//                     resultString = @"unknown";
-//                     break;
-//             }
-//
-//             NSLog(@"[IOSAppTracking] permission status: %@", resultString);
+
+            switch (status) {
+                case ATTrackingManagerAuthorizationStatusAuthorized:
+                    NSLog(@"Authorized");
+                    resultString = @"authorized";
+                    break;
+
+                case ATTrackingManagerAuthorizationStatusNotDetermined:
+                    NSLog(@"not-determined");
+                    resultString = @"not-determined";
+                    break;
+
+                case ATTrackingManagerAuthorizationStatusRestricted:
+                    NSLog(@"restricted");
+                    resultString = @"restricted";
+                    break;
+
+                case ATTrackingManagerAuthorizationStatusDenied:
+                    NSLog(@"denied");
+                    resultString = @"denied";
+                    break;
+
+                default:
+                    NSLog(@"unknown");
+                    resultString = @"unknown";
+                    break;
+            }
+
+            NSLog(@"[IOSAppTracking] permission status: %@", resultString);
         }];
     } else {
         NSLog(@"[IOSAppTracking] iOS 14 not detected!");
