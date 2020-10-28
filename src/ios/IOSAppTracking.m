@@ -51,7 +51,6 @@
         dispatch_semaphore_signal(semaphore);
     }
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-    dispatch_release(semaphore);
     CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:res];
     [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }
