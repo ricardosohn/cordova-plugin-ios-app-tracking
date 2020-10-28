@@ -1,0 +1,28 @@
+{
+  "name": "cordova-plugin-ios-app-tracking",
+  "version": "0.1.0",
+  "description": "A plugin to get user tracking permission (used for 3rd party cookies)",
+  "cordova": {
+    "id": "cordova-plugin-ios-app-tracking",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ricardosohn/cordova-plugin-ios-app-tracking"
+  },
+  "keywords": [
+    "cordova",
+    "plugin",
+    "itp-permission",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "Ricardo Sohn",
+  "license": "Apache-2",
+  "bugs": {
+    "url": "https://github.com/ricardosohn/cordova-plugin-ios-app-tracking/issues"
+  },
+  "homepage": "https://github.com/ricardosohn/cordova-plugin-ios-app-tracking#readme"
+}

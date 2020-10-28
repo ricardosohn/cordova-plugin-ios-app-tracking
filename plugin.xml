@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="cordova-plugin-ios-app-tracking"
+        version="0.1.0">
+
+  <name>IOSAppTracking</name>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+
+  <asset src="www/IOSAppTracking.js" target="js/IOSAppTracking.js"/>
+
+  <js-module src="www/IOSAppTracking.js" name="IOSAppTracking">
+    <clobbers target="IOSAppTracking" />
+  </js-module>
+
+
+  <platform name="ios">
+    
+    <config-file target="config.xml" parent="/*">
+      <feature name="IOSAppTracking">
+        <param name="ios-package" value="IOSAppTracking" />
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+
+    <config-file target="*-Info.plist" parent="NSCrossWebsiteTrackingUsageDescription">
+      <array>
+        <string>Fusion platform needs third party cookies to correctly render the app's content</string>
+      </array>
+    </config-file>
+
+    <config-file target="*-Info.plist" parent="NSUserTrackingUsageDescription">
+      <array>
+        <string>Fusion platform needs third party cookies to correctly render the app's content</string>
+      </array>
+    </config-file>
+
+    <header-file src="src/ios/IOSAppTracking.h" target-dir="IOSAppTracking"/>
+    <source-file src="src/ios/IOSAppTracking.m" target-dir="IOSAppTracking"/>
+
+    <framework src="AppTrackingTransparency.framework" />
+    <framework src="AdSupport.framework" />
+  </platform>
+
+</plugin>
