@@ -32,9 +32,7 @@
     </config-file>
 
     <config-file target="*-Info.plist" parent="NSUserTrackingUsageDescription">
-      <array>
-        <string>Fusion platform needs third party cookies to correctly render the app's content</string>
-      </array>
+      <string>Fusion platform needs third party cookies to correctly render the app's content</string>
     </config-file>
 
     <header-file src="src/ios/IOSAppTracking.h" target-dir="IOSAppTracking"/>
