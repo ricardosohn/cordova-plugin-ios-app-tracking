@@ -6,48 +6,47 @@
 
 - (NSString*)requestPermission:(CDVInvokedUrlCommand*)command
 {
-    __block NSString* resultString = @"";
+    __block NSString* res = [[NSMutableString alloc] initWithString:@"none"];
     NSLog(@"[IOSAppTracking] Request Permission called!");
 
     if (@available(iOS 14, *)) {
         NSLog(@"[IOSAppTracking] iOS 14 detected!");
-        [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
-            NSLog(@"[IOSAppTracking] depois do request");
 
-            switch (status) {
-                case ATTrackingManagerAuthorizationStatusAuthorized:
-                    NSLog(@"Authorized");
-                    resultString = @"authorized";
-                    break;
+        if ([ATTrackingManager trackingAuthorizationStatus] == ATTrackingManagerAuthorizationStatusNotDetermined) {
+            [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+                NSLog(@"[IOSAppTracking] permission status: %lu", status);
 
-                case ATTrackingManagerAuthorizationStatusNotDetermined:
-                    NSLog(@"not-determined");
-                    resultString = @"not-determined";
-                    break;
+                switch (status) {
+                    case ATTrackingManagerAuthorizationStatusAuthorized:
+                        [res setString:@"authorized"];
+                        break;
 
-                case ATTrackingManagerAuthorizationStatusRestricted:
-                    NSLog(@"restricted");
-                    resultString = @"restricted";
-                    break;
+                    case ATTrackingManagerAuthorizationStatusNotDetermined:
+                        [res setString:@"not-determined"];
+                        break;
 
-                case ATTrackingManagerAuthorizationStatusDenied:
-                    NSLog(@"denied");
-                    resultString = @"denied";
-                    break;
+                    case ATTrackingManagerAuthorizationStatusRestricted:
+                        [res setString:@"restricted"];
+                        break;
 
-                default:
-                    NSLog(@"unknown");
-                    resultString = @"unknown";
-                    break;
-            }
+                    case ATTrackingManagerAuthorizationStatusDenied:
+                        [res setString:@"denied"];
+                        break;
 
-            NSLog(@"[IOSAppTracking] permission status: %@", resultString);
-        }];
+                    default:
+                        [res setString:@"unknown"];
+                        break;
+                }
+                NSLog(@"[IOSAppTracking] permission status result: %s", res);
+            }];
+        } else {
+            NSLog(@"[IOSAppTracking] Dialog was already shown, skipping ...");
+        }
     } else {
         NSLog(@"[IOSAppTracking] iOS 14 not detected!");
     }
 
-    CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:resultString];
+    CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:res];
     [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }
 
