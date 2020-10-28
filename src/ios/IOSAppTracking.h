@@ -2,6 +2,6 @@
 
 @interface IOSAppTracking : CDVPlugin
 
-- (NSString*) requestPermission:(CDVInvokedUrlCommand*)command;
+- (void) requestPermission:(CDVInvokedUrlCommand*)command;
 
 @end
