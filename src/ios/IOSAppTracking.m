@@ -37,10 +37,9 @@
                     default:
                         [res setString:@"unknown"];
                         break;
-
-                    CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:res];
-                    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
                 }
+                CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:res];
+                [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
                 NSLog(@"[IOSAppTracking] permission status result: %s", res);
             }];
         } else {
