@@ -26,9 +26,7 @@
     </config-file>
 
     <config-file target="*-Info.plist" parent="NSCrossWebsiteTrackingUsageDescription">
-      <array>
         <string>Fusion platform needs third party cookies to correctly render the app's content</string>
-      </array>
     </config-file>
 
     <config-file target="*-Info.plist" parent="NSUserTrackingUsageDescription">
